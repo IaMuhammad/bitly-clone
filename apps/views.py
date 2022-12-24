@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import FormView, CreateView
+from django.views.generic import FormView
 
 from apps.forms import UrlForm, MessageForm
 from apps.models import Url, Clicks, Message
@@ -29,12 +29,10 @@ class MainFormView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['today_count'] = Clicks.objects.filter(viewed_at=datetime.today())
+        context['today_count'] = Clicks.objects.filter(viewed_at=datetime.today()).count()
         context['all_count'] = Clicks.objects.all().count()
         return context
 
-    def form_invalid(self, form):
-        return super().form_invalid(form)
 
 class MessageView(FormView):
     model = Message()
@@ -44,9 +42,6 @@ class MessageView(FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
-
-    def form_invalid(self, form):
-        return super().form_invalid(form)
 
 
 class ShortView(View):
