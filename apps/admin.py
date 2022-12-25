@@ -11,5 +11,4 @@ class MessageAdmin(ModelAdmin):
     list_filter = ('subject', 'email', 'written_at')
 
     def message_100(self, obj):
-        print(1)
         return obj.message[:100]
