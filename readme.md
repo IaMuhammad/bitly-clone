@@ -9,8 +9,8 @@
 <img src="readme/face.png">
 </p>
 
-You can also contact admins for requests and suggestions in this page.
+***You can also contact admins for requests and suggestions in this page.***
 <p align="center">
-<img src="readme/send1.png">
+<img src="readme/send.png">
 </p>
 
